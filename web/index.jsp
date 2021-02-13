@@ -11,9 +11,14 @@
     <title>$Title$</title>
   </head>
   <body>
+  <p>openId的值为：${pageContext.getSession().getAttribute("openId")}</p>
   <form action="${pageContext.request.contextPath}/admin/checkLogin" method="post">
     <input type="text" name="userName">
     <input type="text" name="password">
+    <input type="submit">
+  </form>
+  <form action="${pageContext.request.contextPath}/admin/checkOpenId" method="post">
+    <input type="text" name="openId" value="${pageContext.getSession().getAttribute("openId")}">
     <input type="submit">
   </form>
   </body>
