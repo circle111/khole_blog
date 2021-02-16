@@ -2,11 +2,10 @@ package com.circle.service;
 
 import com.circle.BaseTest;
 import com.circle.pojo.Article;
-import com.circle.pojo.User;
+import com.circle.service.impl.ArticleServiceImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 
 public class ArticleServiceTest extends BaseTest {
     @Autowired
@@ -18,7 +17,15 @@ public class ArticleServiceTest extends BaseTest {
         article.setTypeId(1);
         article.setArticleContent("asdfasdf");
         article.setViewCount(0);
-        int res = articleService.addArticle(article);
+        boolean res = articleService.addArticle(article);
+        System.out.println(res);
+    }
+    @Test
+    @Transactional
+    public void deleteArticle(){
+        articleService.deleteArticle(47);
+        int a = 1/ 0;
+        boolean res = articleService.deleteArticle(48);
         System.out.println(res);
     }
 }

@@ -12,17 +12,24 @@
         http://www.springframework.org/schema/aop
         https://www.springframework.org/schema/aop/spring-aop.xsd">
     <context:component-scan base-package="com.circle.service"/>
+    <!--解决问题-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
     <!--开启事务-->
-    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+    <!--注册事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <!--配置事务通知-->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="*" propagation="REQUIRED"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="check*" propagation="SUPPORTS" read-only="true"/>
         </tx:attributes>
     </tx:advice>
+    <!--aop配置事务的切入-->
     <aop:config>
-        <aop:pointcut id="txPointCut" expression="execution(* com.circle.dao.*.*(..))"/>
+        <aop:pointcut id="txPointCut" expression="execution(* com.circle.service.impl.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
     </aop:config>
 </beans>

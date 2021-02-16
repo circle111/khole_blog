@@ -3,10 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.circle.dao.ArticleMapper">
+    <!--数据表别名-->
+    <sql id="tb">react_blog.article</sql>
     <!--添加文章addArticle-->
     <insert id="addArticle" parameterType="Article">
-        insert into react_blog.article
+        insert into <include refid="tb"/>
         (type_id, title, article_content, introduce, addTime, lastTime, view_count)
         value(#{typeId}, #{title}, #{articleContent}, #{introduce}, #{addTime}, #{lastTime}, #{viewCount})
     </insert>
+    <!--//删除文章delArticle-->
+    <delete id="deleteArticle" parameterType="java.lang.Integer">
+        delete from <include refid="tb"/>
+        where id = #{articleId}
+    </delete>
 </mapper>

@@ -2,6 +2,7 @@ package com.circle.dao;
 
 import com.circle.pojo.Article;
 import com.circle.pojo.Type;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface ArticleMapper {
     //添加文章
     public int addArticle(Article article);
     //删除文章
-    public int delArticle(Integer id);
+    public int deleteArticle(@Param("articleId") Integer id);
     //修改文章
     public int updateArticle(Article article);
     //查询所有的文章类型

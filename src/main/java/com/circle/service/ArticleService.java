@@ -4,5 +4,7 @@ import com.circle.pojo.Article;
 
 public interface ArticleService {
     //添加文章
-    public int addArticle(Article article);
+    public boolean addArticle(Article article);
+    //删除文章
+    public boolean deleteArticle(Integer id);
 }
