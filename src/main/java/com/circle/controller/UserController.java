@@ -25,7 +25,6 @@ import java.util.Map;
 @RestController
 public class UserController {
     @Autowired(required = false)
-    @Qualifier("UserServiceImpl")
     private UserService userService;
     //登录
     @PostMapping("/admin/checkLogin")
