@@ -4,18 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Article {
-    private int id;
-    private int typeId;
+    private Integer id;
+    private Integer typeId;
     private String title;
     private String articleContent;
     private String introduce;
-    private int addTime;
-    private int lastTime;
-    private int viewCount;
+    private Date addTime;
+    private Date lastTime;
+    private Integer viewCount;
 
     private String typeName;
     private String icon;

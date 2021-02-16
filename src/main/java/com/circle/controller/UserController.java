@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +34,8 @@ public class UserController {
         String password = request.getParameter("password");
         User user = userService.checkLogin(userName, password);
         Map<String, Object> map = new HashMap<String, Object>();
-        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = dateFormat.format(new Date());
         if (user != null) {
             request.getSession().setAttribute("openId", date);
             request.getSession().setAttribute("isNew", false);
@@ -48,8 +51,9 @@ public class UserController {
     public String checkOpenId(HttpServletRequest request){
         String cOpenId = request.getParameter("openId");
         String sOpenId = (String) request.getSession().getAttribute("openId");
+        System.out.println("检查openId是否一致\ncOpenId:" + cOpenId + "\nsOpenId:" + sOpenId);
         Map<String, Object> map = new HashMap<String, Object>();
-        if (sOpenId != null & cOpenId.equals(sOpenId)) {
+        if (sOpenId != null && cOpenId.equals(sOpenId)) {
             map.put("data", "已经登录");
         } else {
             map.put("data", "没有登录");
@@ -58,10 +62,10 @@ public class UserController {
     }
     //推出登录
     @GetMapping("/admin/outLogin")
-    public String  outLogin(HttpServletRequest request){
-        request.getSession().setAttribute("openId", null);
+    public String  outLogin(HttpSession session){
+        session.removeAttribute("openId");
+        session.invalidate();
         Map<String, Object> map = new HashMap<String, Object>();
-        ObjectMapper mapper = new ObjectMapper();
         map.put("data", "退出成功");
         return JSONutil.getJson(map);
     }

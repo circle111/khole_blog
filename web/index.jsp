@@ -21,5 +21,6 @@
     <input type="text" name="openId" value="${pageContext.getSession().getAttribute("openId")}">
     <input type="submit">
   </form>
+  <a href="${pageContext.request.contextPath}/admin/outLogin">退出</a>
   </body>
 </html>
