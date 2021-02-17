@@ -10,6 +10,7 @@
     <typeAliases>
         <typeAlias type="com.circle.pojo.User" alias="User"/>
         <typeAlias type="com.circle.pojo.Article" alias="Article"/>
+        <typeAlias type="com.circle.pojo.Type" alias="Type"/>
     </typeAliases>
     <mappers>
         <mapper class="com.circle.dao.UserMapper"/>
