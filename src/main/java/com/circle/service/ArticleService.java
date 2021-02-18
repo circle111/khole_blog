@@ -12,8 +12,6 @@ public interface ArticleService {
     public boolean deleteArticle(Integer id);
     //修改文章
     public boolean updateArticle(Article article);
-    //获取所有的文章类型
-    public List<Type> getTypeInfo();
     //获取所有的文章
     public List<Article> getArticleList();
     //通过文章id获取

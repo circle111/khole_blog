@@ -13,8 +13,6 @@ public interface ArticleMapper {
     public int deleteArticle(@Param("articleId") Integer id);
     //修改文章
     public int updateArticle(Article article);
-    //查询所有的文章类型
-    public List<Type> getTypeInfo();
     //查询所有的文章列表
     public List<Article> getArticleList();
     //根据文章序号查询文章

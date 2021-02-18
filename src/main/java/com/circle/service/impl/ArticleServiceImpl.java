@@ -22,9 +22,6 @@ public class ArticleServiceImpl implements ArticleService {
     public boolean updateArticle(Article article) {
         return articleMapper.updateArticle(article) > 0;
     }
-    public List<Type> getTypeInfo() {
-        return articleMapper.getTypeInfo();
-    }
     public List<Article> getArticleList() {
         return articleMapper.getArticleList();
     }

@@ -31,10 +31,10 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.3" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.3.3" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.3.3" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-test:5.3.3" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.3.3" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.3.3" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.3.3" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-test:5.3.3" />
         </element>
       </element>
     </root>

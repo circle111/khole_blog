@@ -46,10 +46,6 @@
         </set>
         where id = #{id}
     </update>
-    <!--查询所有的文章类型getTypeInfo-->
-    <select id="getTypeInfo" resultType="Type">
-        select * from <include refid="type"/>
-    </select>
     <!--查询所有的文章getArticleList-->
     <select id="getArticleList" resultMap="ArticleMap">
         select * from <include refid="tb"/>

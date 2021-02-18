@@ -45,10 +45,6 @@ public class ArticleServiceTest extends BaseTest {
         System.out.println(res);
     }
     @Test
-    public void getTypeInfo(){
-        System.out.println(articleService.getTypeInfo());
-    }
-    @Test
     public void getArticleList(){
         List<Article> list = articleService.getArticleList();
         for (Article article : list) {
