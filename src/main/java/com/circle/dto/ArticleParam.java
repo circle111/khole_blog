@@ -9,7 +9,8 @@ public class ArticleParam {
     private String title;
     private String article_content;
     private String introduce;
-    private Integer addTime;
-    private Integer lastTime;
+    private String addTime;
+    private String lastTime;
     private Integer view_count;
+    private String typeName;
 }

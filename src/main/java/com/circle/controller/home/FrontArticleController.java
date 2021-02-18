@@ -1,4 +1,4 @@
-package com.circle.controller.admin;
+package com.circle.controller.home;
 
 import com.circle.dto.ArticleParam;
 import com.circle.pojo.Article;
@@ -7,7 +7,9 @@ import com.circle.service.ArticleService;
 import com.circle.service.TypeService;
 import com.circle.utils.JSONutil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,70 +17,43 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class ArticleController {
+public class FrontArticleController {
     @Autowired
     private ArticleService articleService;
     @Autowired
     private TypeService typeService;
-    //增加文章
-    @PostMapping("/admin/addArticle")
-    public String addArticle(@RequestBody ArticleParam articleParam) {
-        System.out.println(">SendData:" + articleParam.toString());
-        Article article = new Article();
-        boolean res = false;
-        Map<String, Object> map = new HashMap<String, Object>();
-        article.setTypeId(articleParam.getType_id());
-        article.setTitle(articleParam.getTitle());
-        article.setIntroduce(articleParam.getIntroduce());
-        article.setArticleContent(articleParam.getArticle_content());
-        article.setAddTime(articleParam.getAddTime());
-        article.setLastTime(articleParam.getLastTime());
-        article.setViewCount(articleParam.getView_count());
-        System.out.println(">Be insert data:" + article);
-        res = articleService.addArticle(article);
-        map.put("isSuccess", res);
-        if (res) map.put("insertId", 1);
-        else map.put("insertId", 2);
-        return JSONutil.getJson(map);
-    }
-    //删除文章
-    @RequestMapping("/admin/delArticle/{id}")
-    public String deleteArticle(@PathVariable int id) {
-        boolean res = articleService.deleteArticle(id);
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("data", res);
-        return JSONutil.getJson(map);
-    }
-    //修改文章
-    @PostMapping("/admin/updateArticle")
-    public String updateArticle(@RequestBody ArticleParam articleParam) {
-        System.out.println(">AcceptData:" + articleParam.toString());
-        Article article = new Article();
-        boolean res = false;
-        Map<String, Object> map = new HashMap<String, Object>();
-        article.setId(articleParam.getId());
-        article.setTypeId(articleParam.getType_id());
-        article.setTitle(articleParam.getTitle());
-        article.setIntroduce(articleParam.getIntroduce());
-        article.setArticleContent(articleParam.getArticle_content());
-        article.setAddTime(articleParam.getAddTime());
-        article.setLastTime(articleParam.getLastTime());
-        article.setViewCount(articleParam.getView_count());
-        System.out.println(">Be update data:" + article);
-        res = articleService.updateArticle(article);
-        map.put("isSuccess", res);
-        return JSONutil.getJson(map);
-    }
     //获取文章类型信息
-    @GetMapping("/admin/getTypeInfo")
+    @GetMapping("/default/getTypeInfo")
     public String getTypeInfo() {
         List<Type> typeInfo = typeService.getTypeInfo();
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("data", typeInfo);
         return JSONutil.getJson(map);
     }
+    //获取相同类型的文章
+    @GetMapping("/default/getArticleListByType/{typeId}")
+    public String getArticleByType(@PathVariable("typeId") Integer typeId) {
+        List<Article> artList = articleService.getArticleListByType(typeId);
+        List<ArticleParam> list = new ArrayList<ArticleParam>();
+        for (Article article : artList) {
+            ArticleParam articleParam = new ArticleParam();
+            articleParam.setId(article.getId());
+            articleParam.setType_id(article.getTypeId());
+            articleParam.setTitle(article.getTitle());
+            articleParam.setIntroduce(article.getIntroduce());
+            articleParam.setArticle_content(article.getArticleContent());
+            articleParam.setAddTime(article.getAddTime());
+            articleParam.setLastTime(article.getLastTime());
+            articleParam.setView_count(article.getViewCount());
+            articleParam.setTypeName(article.getType().getTypeName());
+            list.add(articleParam);
+        }
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("data", list);
+        return JSONutil.getJson(map);
+    }
     //获取文章列表
-    @GetMapping("/admin/getArticleList")
+    @GetMapping("/default/getArticleList")
     public String getArticleList() {
         List<Article> list = articleService.getArticleList();
         List<ArticleParam> resList = new ArrayList<ArticleParam>();
@@ -96,11 +71,11 @@ public class ArticleController {
             articleParam.setTypeName(article.getType().getTypeName());
             resList.add(articleParam);
         }
-        map.put("list", resList);
+        map.put("data", resList);
         return JSONutil.getJson(map);
     }
     //根据文章id获得文章详情，用于修改文章
-    @GetMapping("/admin/getArticleById/{id}")
+    @GetMapping("/default/getArticleById/{id}")
     public String getArticleById(@PathVariable("id") Integer id) {
         System.out.println(">The Article only id:" + id);
         Article result = articleService.getArticleById(id);
@@ -108,13 +83,13 @@ public class ArticleController {
         ArticleParam articleParam = new ArticleParam();
         articleParam.setId(result.getId());
         articleParam.setType_id(result.getTypeId());
+        articleParam.setTypeName(result.getType().getTypeName());
         articleParam.setTitle(result.getTitle());
         articleParam.setIntroduce(result.getIntroduce());
         articleParam.setArticle_content(result.getArticleContent());
         articleParam.setAddTime(result.getAddTime());
         articleParam.setLastTime(result.getLastTime());
         articleParam.setView_count(result.getViewCount());
-        articleParam.setTypeName(result.getType().getTypeName());
         map.put("data", articleParam);
         return JSONutil.getJson(map);
     }

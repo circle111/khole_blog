@@ -19,8 +19,8 @@ public class ArticleServiceTest extends BaseTest {
         article.setTitle("王源");
         article.setArticleContent("asdfasdf");
         article.setIntroduce("asd");
-        article.setAddTime(123);
-        article.setLastTime(321);
+        article.setAddTime("123");
+        article.setLastTime("321");
         article.setViewCount(0);
         boolean res = articleService.addArticle(article);
         System.out.println(res);
@@ -38,8 +38,8 @@ public class ArticleServiceTest extends BaseTest {
         article.setTitle("王源123");
         article.setArticleContent("asdfasdf123");
         article.setIntroduce("asd123");
-        article.setAddTime(123123);
-        article.setLastTime(321123);
+        article.setAddTime("123123");
+        article.setLastTime("321123");
         article.setViewCount(123);
         boolean res = articleService.updateArticle(article);
         System.out.println(res);

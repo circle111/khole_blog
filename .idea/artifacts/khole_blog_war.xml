@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="khole_blog:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/khole_blog_war</output-path>
+    <root id="archive" name="khole_blog_war.war">
+      <element id="artifact" artifact-name="khole_blog:war exploded" />
+      <element id="dir-copy" path="$PROJECT_DIR$/web" />
+    </root>
+  </artifact>
+</component>

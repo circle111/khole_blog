@@ -13,8 +13,8 @@ public class Article {
     private String title;
     private String articleContent;
     private String introduce;
-    private Integer addTime;
-    private Integer lastTime;
+    private String addTime;
+    private String lastTime;
     private Integer viewCount;
 
     private Type type;
