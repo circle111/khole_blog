@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class ArticleParam {
+    private Integer id;
     private Integer type_id;
     private String title;
     private String article_content;
