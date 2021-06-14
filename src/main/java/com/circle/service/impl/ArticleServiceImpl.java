@@ -1,8 +1,7 @@
 package com.circle.service.impl;
 
-import com.circle.dao.ArticleMapper;
+import com.circle.mapper.ArticleMapper;
 import com.circle.pojo.Article;
-import com.circle.pojo.Type;
 import com.circle.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

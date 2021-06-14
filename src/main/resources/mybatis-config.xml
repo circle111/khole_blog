@@ -13,7 +13,7 @@
         <typeAlias type="com.circle.pojo.Type" alias="Type"/>
     </typeAliases>
     <mappers>
-        <mapper class="com.circle.dao.UserMapper"/>
-        <mapper class="com.circle.dao.ArticleMapper"/>
+        <mapper class="com.circle.mapper.UserMapper"/>
+        <mapper class="com.circle.mapper.ArticleMapper"/>
     </mappers>
 </configuration>

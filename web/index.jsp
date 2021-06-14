@@ -8,19 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>KHole个人博客系统</title>
   </head>
   <body>
-  <p>openId的值为：${pageContext.getSession().getAttribute("openId")}</p>
-  <form action="${pageContext.request.contextPath}/admin/checkLogin" method="post">
-    <input type="text" name="userName">
-    <input type="text" name="password">
-    <input type="submit">
-  </form>
-  <form action="${pageContext.request.contextPath}/admin/checkOpenId" method="post">
-    <input type="text" name="openId" value="${pageContext.getSession().getAttribute("openId")}">
-    <input type="submit">
-  </form>
-  <a href="${pageContext.request.contextPath}/admin/outLogin">退出</a>
+  <p>你已经成功启动KHole博客的后端服务系统</p>
+  <p>恭喜你，希望你能不断超越自己，改变自己，放飞青春实现梦想:-)</p>
   </body>
 </html>

@@ -1,6 +1,6 @@
 package com.circle.service.impl;
 
-import com.circle.dao.TypeMapper;
+import com.circle.mapper.TypeMapper;
 import com.circle.pojo.Type;
 import com.circle.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;

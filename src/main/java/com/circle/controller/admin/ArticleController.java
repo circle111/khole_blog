@@ -52,7 +52,6 @@ public class ArticleController {
     //修改文章
     @PostMapping("/admin/updateArticle")
     public String updateArticle(@RequestBody ArticleParam articleParam) {
-        System.out.println(">AcceptData:" + articleParam.toString());
         Article article = new Article();
         boolean res = false;
         Map<String, Object> map = new HashMap<String, Object>();
@@ -64,7 +63,6 @@ public class ArticleController {
         article.setAddTime(articleParam.getAddTime());
         article.setLastTime(articleParam.getLastTime());
         article.setViewCount(articleParam.getView_count());
-        System.out.println(">Be update data:" + article);
         res = articleService.updateArticle(article);
         map.put("isSuccess", res);
         return JSONutil.getJson(map);
@@ -102,7 +100,6 @@ public class ArticleController {
     //根据文章id获得文章详情，用于修改文章
     @GetMapping("/admin/getArticleById/{id}")
     public String getArticleById(@PathVariable("id") Integer id) {
-        System.out.println(">The Article only id:" + id);
         Article result = articleService.getArticleById(id);
         Map<String, Object> map = new HashMap<String, Object>();
         ArticleParam articleParam = new ArticleParam();

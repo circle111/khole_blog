@@ -77,7 +77,6 @@ public class FrontArticleController {
     //根据文章id获得文章详情，用于修改文章
     @GetMapping("/default/getArticleById/{id}")
     public String getArticleById(@PathVariable("id") Integer id) {
-        System.out.println(">The Article only id:" + id);
         Article result = articleService.getArticleById(id);
         Map<String, Object> map = new HashMap<String, Object>();
         ArticleParam articleParam = new ArticleParam();

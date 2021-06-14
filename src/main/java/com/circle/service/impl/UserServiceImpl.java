@@ -1,6 +1,6 @@
 package com.circle.service.impl;
 
-import com.circle.dao.UserMapper;
+import com.circle.mapper.UserMapper;
 import com.circle.pojo.User;
 import com.circle.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

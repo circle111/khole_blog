@@ -29,21 +29,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <session-config>
-        <session-timeout>15</session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
-    <!--跨域过滤器-->
-    <filter>
-        <filter-name>cors</filter-name>
-        <filter-class>com.circle.filter.CORSFilter</filter-class>
-        <init-param>
-            <param-name>permitUrl</param-name>
-            <param-value>
-                http://localhost:3000
-            </param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>cors</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 </web-app>
